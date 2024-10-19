@@ -12,7 +12,7 @@ ayarlar = {
 }
 
 #Bot gelişticilerinin listesi:
-DEVELOPERS_IDS = [AUTHOR IDS] #Geliştiricilerin Dİscord idleri.
+DEVELOPERS_IDS = [AUTHOR IDS] #Geliştiricilerin Discord idleri. (yalnızca Int değer)
 ```
 - Gerekli kütüpahaneleri kuralım:
 ```bash
