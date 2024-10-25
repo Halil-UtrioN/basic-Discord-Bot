@@ -30,6 +30,14 @@ GUILD_ID = discord.Object(id=829299088046424074)
 #Bot çalışınca olacaklar.
 @bot.event
 async def on_ready():
+    #Slash komutları senkronize edilip edilmediğini doğruluyoruz.
+    """
+    try:
+        bot.tree.sync()
+        print(f"{bot.user} giriş yaptı ve slash komutları senkronize edildi.")
+    except Exception as e:
+        print(f"Hata oluştu: {e}")
+    """
     await bot.tree.sync(guild=GUILD_ID) #Salsh komutlarını Discord'a kaydetme veya güncelleme.
     activity = discord.Game("Bir şey")
     await bot.change_presence(activity=activity) #Bota 'oynuyor' etkinliği veriyoruz
@@ -115,8 +123,8 @@ async def onDestroy(ctx):
 async def hi(interaction: discord.Interaction):
     await interaction.response.send_message(f"As, {interaction.user.mention}")
 
-@bot.tree.command(name="onDestroy", description="Yalnızca geliiştiricler için.")
-async def onDestroy(interaction: discord.Interaction):
+@bot.tree.command(name="ondestroy", description="Yalnızca geliiştiricler için.")
+async def ondestroy(interaction: discord.Interaction):
     if interaction.user.id in DEVELOPERS_IDS:
         #Geliştirici ise
         await interaction.response.send_message(f"Bot kapatılıyor o7 \n Kapatan: {interaction.user.mention}")
@@ -124,6 +132,15 @@ async def onDestroy(interaction: discord.Interaction):
         await bot.close()
     else:
         await interaction.response.send_message("Bu komutu kullanamazsın :x: ")
+
+@bot.tree.command(name="test", description="Test command")
+async def test(interaction: discord.Interaction, deger: str):
+    await interaction.response.send_message(f"Değer: {deger}")
+
+@bot.tree.command(name="ping")
+async def ping(interaction: discord.Interaction):
+    await interaction.response.send_message("Pong!")
+
 
 
 
