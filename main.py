@@ -4,6 +4,7 @@ import discord
 from ayarlar import ayarlar, DEVELOPERS_IDS
 import random
 import time
+import os
 
 
 
@@ -116,6 +117,15 @@ async def onDestroy(ctx):
     await ctx.send("Bot kapatılıyor o7")
     time.sleep(1)
     await bot.close()
+
+# Dosya gönderme komudu. Örnek olarak 'images' klasöründeki resimlerden rastgele seçer.
+@bot.command()
+async def mem(ctx):
+    # Dosya adını bir değişkenden bu şekilde değiştirebilirsiniz!
+    img_name = random.choice(os.listdir("images"))
+    with open(f'images/{img_name}', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(file=picture)
 
 #Burada slash komutları yer alır.
 
