@@ -27,4 +27,4 @@ pip install time
 
 ## **ÖNEMLİ**
 - Botunuzun tokenini asla paylaşımayın.
-- [Burada](main.py) 28. satırda botu deneyeceğiniz sunucun İD yi koyuyorsunuz. Çünkü bu bir test botudur.
+- [Burada](main.py) 29. satırda botu deneyeceğiniz sunucun İD yi koyuyorsunuz. Çünkü bu bir test botudur.
